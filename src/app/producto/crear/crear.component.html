@@ -4,17 +4,18 @@
             <h3>Agregar producto</h3>
         </div>
         <div class="card-body">
-           <form action="">
+           <form [formGroup]="formulario" (ngSubmit)="crear()">
                <div class="from-group">
                    <label for="">Descripcion</label>
-                   <input [(ngModel)]="producto.descripcion" name="descripcion" type="text" class="form-control">
+                   <input id="descripcion" formControlName="descripcion" type="text" class="form-control">
                    <label for="">Costo</label>
-                   <input [(ngModel)]="producto.precioCompra" name="costo" type="text" class="form-control">
+                   <input id="preciocompra" formControlName="preciocompra" type="text" class="form-control" 
+                   numeric decimals="2">
                    <label for="">Venta</label>
-                   <input [(ngModel)]="producto.precioVenta" name="venta" type="text" class="form-control">
+                   <input id="precioventa" formControlName="precioventa" type="text" class="form-control">
                    <label for="">Stock</label>
-                   <input [(ngModel)]="producto.stock" name="stock" type="text" class="form-control">
-                   <button (click)="crear()" class="btn btn-success">Guardar</button>
+                   <input id="stock" formControlName="stock" type="text" class="form-control">
+                   <button type="submit" [disabled]="!formulario.valid" class="btn btn-success">Guardar</button>
                </div>
            </form>
         </div>

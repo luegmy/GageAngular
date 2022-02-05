@@ -8,7 +8,7 @@ import { CrearComponent } from './producto/crear/crear.component';
 import { ActualizarComponent } from './producto/actualizar/actualizar.component';
 import { ListarComponent } from './producto/listar/listar.component';
 import { EliminarComponent } from './producto/eliminar/eliminar.component';
-import {FormsModule} from "@angular/forms";
+import {ReactiveFormsModule,FormsModule} from "@angular/forms";
 import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
@@ -23,6 +23,7 @@ import {HttpClientModule} from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [ProductoService],

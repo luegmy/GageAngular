@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActualizarComponent implements OnInit {
 
-  producto:Producto=new Producto;
+  producto:Producto;
   constructor(private servicio:ProductoService,private router:Router) { }
 
   ngOnInit(): void {

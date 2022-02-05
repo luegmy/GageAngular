@@ -19,8 +19,8 @@
                     <tr *ngFor="let producto of productos">
                         <td>{{producto.codProducto}}</td>
                         <td>{{producto.descripcion}}</td>
-                        <td>{{producto.precioCompra}}</td>
-                        <td>{{producto.precioVenta}}</td>
+                        <td>{{producto.preciocompra}}</td>
+                        <td>{{producto.precioventa}}</td>
                         <td>{{producto.stock}}</td>
                         <td><button (click)="editar(producto)" class="btn btn-info">Editar</button>
                             <button (click)="eliminar(producto)"  class="btn btn-danger" style="margin-left: 10px;">Eliminar</button>
