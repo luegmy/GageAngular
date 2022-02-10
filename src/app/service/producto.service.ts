@@ -10,7 +10,7 @@ export class ProductoService {
 
   constructor(private http: HttpClient) { }
 
-  url = 'http://localhost:8080/producto';
+  url = 'http://localhost:8090/producto';
 
   getProductos() {
     return this.http.get<Producto[]>(this.url);
@@ -24,8 +24,8 @@ export class ProductoService {
     return this.http.get<Producto>(this.url + "/" + codigo)
   }
 
-  updateProducto(producto:Producto){
-    return this.http.put<Producto>(this.url + "/" + producto.codProducto,producto)
+  updateProducto(producto:Producto,codigo:string){
+    return this.http.put<Producto>(this.url + "/" + codigo,producto)
   }
 
   deleteProducto(producto:Producto) {

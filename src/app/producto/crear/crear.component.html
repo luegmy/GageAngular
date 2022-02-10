@@ -1,23 +1,28 @@
-<div class="container">
+<div class="container pt-4">
     <div class="card">
         <div class="card-header">
-            <h3>Agregar producto</h3>
+            <h3>{{titulo}}
+                <div *ngIf="loading" class="spinner-border float-right" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+            </h3>
         </div>
         <div class="card-body">
-           <form [formGroup]="formulario" (ngSubmit)="crear()">
-               <div class="from-group">
-                   <label for="">Descripcion</label>
-                   <input id="descripcion" formControlName="descripcion" type="text" class="form-control">
-                   <label for="">Costo</label>
-                   <input id="preciocompra" formControlName="preciocompra" type="text" class="form-control" 
-                   numeric decimals="2">
-                   <label for="">Venta</label>
-                   <input id="precioventa" formControlName="precioventa" type="text" class="form-control">
-                   <label for="">Stock</label>
-                   <input id="stock" formControlName="stock" type="text" class="form-control">
-                   <button type="submit" [disabled]="!formulario.valid" class="btn btn-success">Guardar</button>
-               </div>
-           </form>
+            <span *ngIf="submitted"></span>
+            <form [formGroup]="formulario" (ngSubmit)="crearActualizarProducto()">
+                <div class="from-group">
+                    <label for="">Descripcion</label>
+                    <input id="descripcion" formControlName="descripcion" type="text" class="form-control">
+                    <label for="">Costo</label>
+                    <input id="preciocompra" formControlName="costo" type="number" class="form-control">
+                    <label for="">Venta</label>
+                    <input id="precioventa" formControlName="venta" type="number" class="form-control">
+                    <label for="">Stock</label>
+                    <input id="stock" formControlName="stock" type="number" class="form-control">
+                    <button type="text"  (click)="volver()" class="btn btn-warning">Volver</button>
+                    <button type="submit" class="btn btn-success">Guardar</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

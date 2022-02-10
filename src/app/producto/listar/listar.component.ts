@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Producto } from 'src/app/modelo/Producto';
 import { ProductoService } from 'src/app/service/producto.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-listar',
@@ -10,22 +11,30 @@ import { ProductoService } from 'src/app/service/producto.service';
 })
 export class ListarComponent implements OnInit {
 productos:Producto[];
-  constructor(private servicio:ProductoService,private router:Router) { }
+  constructor(private servicio:ProductoService,
+    private router:Router,
+    private toastr:ToastrService) { }
 
   ngOnInit(): void {
     this.servicio.getProductos()
     .subscribe(data=>{this.productos=data;})
   }
 
-  editar(producto:Producto){
-    localStorage.setItem("codigo",producto.codProducto.toString());
-    this.router.navigate(["actualizar"]);
+   agregar(){
+    this.router.navigate(["crear"])
   }
 
-  eliminar(producto:Producto){
+  editar(producto:Producto){
+    this.router.navigate(["actualizar/",producto.codProducto]);
+  }
+
+  eliminarProducto(producto:Producto){
     this.servicio.deleteProducto(producto)
     .subscribe(data =>{this.productos=this.productos.filter(p=>p!==producto);
-    alert("Producto eliminado...!!!!")})
+      this.toastr.error('El producto fue eliminado con exito!', 'Producto eliminado',
+      {
+        positionClass: 'toast-bottom-right'
+      })})
 
 }
 }

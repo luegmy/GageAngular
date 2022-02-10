@@ -1,10 +1,10 @@
-<div class="container">
+<div class="container mt-4">
     <div class="card">
-        <div class="card-header">
-            <h4>Productos</h4>
-        </div>
         <div class="card-body">
-            <table class="table">
+            <span class="h3">Listado de productos</span>
+            <button class="btn btn-success float-right" (click)="agregar()">Agregar</button>
+           <h5 style="margin-top: 30px;" *ngIf="productos.length==0">No hay datos para mostar</h5>
+            <table *ngIf="productos.length > 0" class="table table-striped mt-5">
                 <thead>
                     <tr>
                         <th>Codigo</th>
@@ -12,6 +12,7 @@
                         <th>Costo</th>
                         <th>Venta</th>
                         <th>Stock</th>
+                        <th></th>
                     </tr>
                 </thead>
 
@@ -19,11 +20,11 @@
                     <tr *ngFor="let producto of productos">
                         <td>{{producto.codProducto}}</td>
                         <td>{{producto.descripcion}}</td>
-                        <td>{{producto.preciocompra}}</td>
-                        <td>{{producto.precioventa}}</td>
+                        <td>{{producto.costo}}</td>
+                        <td>{{producto.venta}}</td>
                         <td>{{producto.stock}}</td>
-                        <td><button (click)="editar(producto)" class="btn btn-info">Editar</button>
-                            <button (click)="eliminar(producto)"  class="btn btn-danger" style="margin-left: 10px;">Eliminar</button>
+                        <td><i (click)="editar(producto)" class="fa fa-edit fa-lg text-info mr-2"></i>
+                            <i (click)="eliminarProducto(producto)"  class="fa fa-trash-alt fa-lg text-danger"></i>
                         </td>
                     </tr>
                 </tbody>

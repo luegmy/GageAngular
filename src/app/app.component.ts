@@ -14,9 +14,7 @@ export class AppComponent {
   listar(){
     this.router.navigate(["listar"]);
   }
-  crear(){
-    this.router.navigate(["crear"])
-  }
+ 
   editar(){
     this.router.navigate(["actualizar"])
   }

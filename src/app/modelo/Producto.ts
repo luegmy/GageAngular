@@ -1,7 +1,7 @@
-export interface Producto {
+export class Producto {
     codProducto: number;
     descripcion: string;
-    preciocompra: number;
-    precioventa: number;
+    costo: number;
+    venta: number;
     stock: number
 }
